@@ -12,7 +12,7 @@ You are working for a wealthy investor that specializes in purchasing assets tha
 This repository aims to address the following points:
 
    - User Overview analysis
-        Data Exploration
-        Data Cleaning/Manipulation
-        Uni-Variate and Multivariate Analysis
-        Outlier Treatment
+      - Data Exploration
+     - Data Cleaning/Manipulation
+       - Uni-Variate and Multivariate Analysis
+       - Outlier Treatment
