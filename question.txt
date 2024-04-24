@@ -1,0 +1,11 @@
+Interim Submission (Due Wednesday 24.04.2024 2000 UTC)
+
+A PDF containing concise and comprehensive descriptions of the key data structure and
+algorithm you used in your code to address Task 2 and Task 3 in 1 or 2 pages. If you use pandas,
+scikit-learn etc. in your code, report on the data structure and algorithm used in the part of 
+those packages you used. Comment on how long (time) and how much memory (RAM size) will it 
+take your code if the data size grows by 10x, 1000x, 100000x, 1000000x.  Comment on the suitability 
+of the data structure and algorithm you used for large data sets.
+Link to your GitHub repository. 
+Feedback
+You may not receive detailed comments on your interim submission, but will receive a grade.
