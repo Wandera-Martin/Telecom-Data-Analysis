@@ -8,28 +8,35 @@ import pandas as pd
 
 
 sys.path.append(os.path.abspath(os.path.join('scripts')))
-from data_cleaning import DataCleaning
-class TestCases(unittest.TestCase):
-    def test_fill_missing_values(self):
-        # Create a sample DataFrame with missing values
-        df = pd.DataFrame({'numbers': [2, 4, 6, 7, 9], 'letters': ['a', 'b', 'c', 'd', 'e'],
-                           'floats': [0.2323, -0.23123, np.NaN, np.NaN, 4.3434]})
-        
-        # Create an instance of DataCleaning class
-        data_cleaner = DataCleaning(df)
-        
-        # Specify the value to fill missing values with
-        fill_value = 0
-        
-        # Call the fill_missing_values method
-        data_cleaner.fill_missing_values(fill_value)
-        
-        # Assert that there are no missing values in the cleaned DataFrame
-        self.assertFalse(data_cleaner.df.isnull().values.any())
-        
-        # Assert that the filled values match the specified fill_value
-        self.assertTrue((data_cleaner.df == fill_value).all().all())
+from data_cleaning import  convert_to_datetime
+import unittest
+import pandas as pd
 
-# Run the unit tests
+class TestConvertToDatetime(unittest.TestCase):
+
+    def test_convert_to_datetime(self):
+        # Create a sample DataFrame
+        df = pd.DataFrame({
+            'Start': ['2022-04-25', '2022-04-26'],
+            'End': ['2022-04-30', '2022-05-01']
+        })
+
+        # Call the function
+        result_df = convert_to_datetime(df)
+
+        # Check if the 'Start' and 'End' columns are converted to datetime
+        self.assertTrue(pd.api.types.is_datetime64_any_dtype(result_df['Start']))
+        self.assertTrue(pd.api.types.is_datetime64_any_dtype(result_df['End']))
+
+        # Check if the output DataFrame has the same shape as the input DataFrame
+        self.assertEqual(result_df.shape, df.shape)
+
+        # Check if the output DataFrame has the same index as the input DataFrame
+        self.assertTrue(result_df.index.equals(df.index))
+
+        # Check if the output DataFrame has the same values as the input DataFrame
+        self.assertTrue(result_df.equals(df))
+
 if __name__ == '__main__':
     unittest.main()
+
